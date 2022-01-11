@@ -10,7 +10,7 @@
 https://hub.docker.com/r/cloverzrg/go-shadowsocks2
 
 示例:  
-`docker run -d -p 8488:8488 cloverzrg/go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:your-password@:8488' -verbose`
+`docker run -d -p 8488:8488 cloverzrg/go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:your-password@:8488' -udp -verbose`
 
 详细参数  
 https://github.com/shadowsocks/go-shadowsocks2
