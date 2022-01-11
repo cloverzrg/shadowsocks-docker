@@ -1,6 +1,6 @@
 # shadowsocks-docker
 
-支持的结构  
+支持的架构  
 `linux/arm64,linux/amd64,linux/386,linux/arm` 需要其他架构可以提issue
 
 构建状态   
