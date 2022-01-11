@@ -1,5 +1,8 @@
 # shadowsocks-docker
 
+支持的结构  
+`linux/arm64,linux/amd64,linux/386,linux/arm` 需要其他架构可以提issue
+
 构建状态   
 [![Build Status](https://drone.jeongen.com/api/badges/cloverzrg/shadowsocks-docker/status.svg)](https://drone.jeongen.com/cloverzrg/shadowsocks-docker)
 
