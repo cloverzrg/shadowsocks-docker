@@ -14,7 +14,7 @@ https://hub.docker.com/r/cloverzrg/go-shadowsocks2
 示例:  
 `docker run -d -p 8488:8488 cloverzrg/go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:your-password@:8488' -udp -verbose`
 
-使用 v2ray-plugin
+使用 v2ray-plugin:  
 `docker run -d -p 8488:8488 cloverzrg/go-shadowsocks2 -s 'ss://AEAD_CHACHA20_POLY1305:your-password@:8488' -verbose -udp -plugin v2ray-plugin -plugin-opts "server;tls;host=your_domain"`
 
 详细参数  
