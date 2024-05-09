@@ -83,4 +83,4 @@ steps:
         ) 
       - docker login --username=cloverzrg -p $password
       - docker buildx create --use
-      - docker buildx build --platform linux/arm64,linux/amd64,linux/386,linux/arm -t cloverzrg/go-shadowsocks2:latest --push --build-arg DRONE_TAG=master .
+      - docker buildx build --platform linux/arm64,linux/amd64,linux/386 -t cloverzrg/go-shadowsocks2:latest --push --build-arg DRONE_TAG=master .
