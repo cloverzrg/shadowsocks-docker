@@ -58,3 +58,29 @@ steps:
       - docker login --username=cloverzrg -p $password
       - docker buildx create --use
       - docker buildx build --platform linux/arm64,linux/amd64,linux/386,linux/arm -t cloverzrg/go-shadowsocks2:$DRONE_TAG -t cloverzrg/go-shadowsocks2:latest --push --build-arg DRONE_TAG=$DRONE_TAG .
+
+  - name: build-docker-latest
+    image: docker:dind
+    environment:
+      password:
+        from_secret: registry-password
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: cache-docker-buildx-0.14.0
+        path: /root/.docker/cli-plugins
+      - name: gomodcache
+        path: /go/pkg/mod
+    commands:
+      - |
+        (
+          set -x; \
+          FILE=~/.docker/cli-plugins/docker-buildx; \
+          [ ! -f $FILE ] && \
+            wget -O $FILE https://github.com/docker/buildx/releases/download/v0.14.0/buildx-v0.14.0.linux-arm64 \
+            && chmod +x $FILE \
+          || true
+        ) 
+      - docker login --username=cloverzrg -p $password
+      - docker buildx create --use
+      - docker buildx build --platform linux/arm64,linux/amd64,linux/386,linux/arm -t cloverzrg/go-shadowsocks2:latest --push --build-arg DRONE_TAG=latest .
