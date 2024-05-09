@@ -10,7 +10,8 @@ ENV GOARCH $TARGETARCH
 RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM, GOOS $GOOS, GOARCH $GOARCH"
 RUN apk update && apk add --no-cache git build-base make
 ENV VERSION $DRONE_TAG
-RUN git clone --branch v${VERSION} https://github.com/shadowsocks/go-shadowsocks2.git
+ENV SS-VERSION 0.1.5
+RUN git clone --branch v${SS-VERSION} https://github.com/shadowsocks/go-shadowsocks2.git
 WORKDIR /go/go-shadowsocks2
 
 RUN go build -trimpath -ldflags "-s -w" -o bin/go-shadowsocks2 .
