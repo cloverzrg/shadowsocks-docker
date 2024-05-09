@@ -32,9 +32,9 @@ steps:
   # @see: https://docs.drone.io/pipeline/docker/examples/services/docker/
   - name: build-docker
     image: docker:dind
-    when:
-      event:
-        - tag
+    # when:
+    #   event:
+    #     - tag
     environment:
       password:
         from_secret: registry-password
