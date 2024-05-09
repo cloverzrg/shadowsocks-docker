@@ -19,9 +19,9 @@ volumes:
   - name: dockersock
     host:
       path: /var/run/docker.sock
-  - name: cache-docker-buildx-0.6.1
+  - name: cache-docker-buildx-0.14.0
     host:
-      path: /tmp/drone/cache/docker-buildx-0.6.1
+      path: /tmp/drone/cache/docker-buildx-0.14.0
   - name: gomodcache
     host:
       path: /var/docker/drone-runner/cache/gomod
@@ -32,16 +32,16 @@ steps:
   # @see: https://docs.drone.io/pipeline/docker/examples/services/docker/
   - name: build-docker
     image: docker:dind
-    # when:
-    #   event:
-    #     - tag
+    when:
+      event:
+        - tag
     environment:
       password:
         from_secret: registry-password
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
-      - name: cache-docker-buildx-0.6.1
+      - name: cache-docker-buildx-0.14.0
         path: /root/.docker/cli-plugins
       - name: gomodcache
         path: /go/pkg/mod
@@ -51,7 +51,7 @@ steps:
           set -x; \
           FILE=~/.docker/cli-plugins/docker-buildx; \
           [ ! -f $FILE ] && \
-            wget -O $FILE https://github.com/docker/buildx/releases/download/v0.6.1/buildx-v0.6.1.linux-arm64 \
+            wget -O $FILE https://github.com/docker/buildx/releases/download/v0.14.0/buildx-v0.14.0.linux-arm64 \
             && chmod +x $FILE \
           || true
         ) 
