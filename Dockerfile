@@ -22,7 +22,7 @@ RUN mv v2ray-plugin_* v2ray-plugin
 FROM --platform=$TARGETPLATFORM alpine:latest
 RUN apk update && apk add --no-cache git && apk add --no-cache ca-certificates tzdata
 COPY --from=builder /go/go-shadowsocks2/bin/go-shadowsocks2 /bin/
-COPY --from=builder /go/go-shadowsocks2/bin/v2ray-plugin /bin/
+COPY --from=builder /go/go-shadowsocks2/v2ray-plugin /bin/
 ENV TZ=Asia/Shanghai
 RUN uname -a
 ENTRYPOINT ["/bin/go-shadowsocks2"]
