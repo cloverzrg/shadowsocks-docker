@@ -20,7 +20,7 @@ RUN tar -zxvf v2ray-plugin.tar.gz
 RUN mv v2ray-plugin_* v2ray-plugin
 
 FROM --platform=$TARGETPLATFORM alpine:latest
-RUN apk update && apk add --no-cache git && apk add --no-cache ca-certificates tzdata
+RUN apk update && apk add --no-cache ca-certificates tzdata iproute2
 COPY --from=builder /go/go-shadowsocks2/bin/go-shadowsocks2 /bin/
 COPY --from=builder /go/go-shadowsocks2/v2ray-plugin /bin/
 ENV TZ=Asia/Shanghai
